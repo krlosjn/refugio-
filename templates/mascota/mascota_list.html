@@ -1,0 +1,63 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td>#</td>
+            <td>Nombre</td>
+            <td>Sexo</td>
+            <td>Edad</td>
+            <td>Fecha de rescate</td>
+            <td>Adoptante</td>
+            <td>Acciones</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% if object_list %}
+        {% for mascota in object_list  %}
+        <tr>
+            <td>{{ mascota.id }}</td>
+            <td>{{ mascota.nombre }}</td>
+            <td>{{ mascota.sexo }}</td>
+            <td>{{ mascota.edad_aproximada }}</td>
+            <td>{{ mascota.fecha_rescate }}</td>
+            <td>{{ mascota.persona.nombre }}{{ mascota.persona.apellidos }}</td>
+            <td> 
+                <a class="btn btn-primary" href="{% url 'mascota_editar' mascota.id %}">
+                Editar</a>
+                <a class="btn btn-danger" href="{% url 'mascota_eliminar' mascota.id %}">
+                Eliminar</a>
+            </td> 
+        </tr>
+        {% endfor  %}
+        {% else  %}
+        <h1>No hay registro de mascotas</h1>
+        {% endif %}  
+    <tbody>
+</table>
+
+
+<div class="dataTables_paginate paging_simple_numbers"
+    id="datatable-buttons_paginate">
+    <ul class="pagination">
+      {% if page_obj.has_previous %}
+      <li class="paginate_button page-item previous" id="datatable-button_previous">
+        <a href="?page={{ page_obj.previous_page_number }}" aria-controls="datatable-buttons" data-dt-idx="0" tabindex="0" class="page-link">Anterior</a>
+      </li>
+       {% endif %}
+       {% if page_obj.has_next %}
+      <li class="paginate_button page-item next" id="datatable-button_next">
+        <a href="?page={{ page_obj.next_page_number }}" aria-controls="datatable-buttons" data-dt-idx="0" tabindex="0" class="page-link">Siguiente</a>
+      </li>
+      {% endif %}
+
+</div>      
+
+
+
+
+
+
+
+{% endblock %}

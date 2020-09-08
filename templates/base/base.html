@@ -1,0 +1,110 @@
+{% load static%}  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block extrahead %} 
+    {% comment %} Aqui se podrian colocar los links {% endcomment %}
+    {% endblock %}
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <title>{% block title %} Document {% endblock %}</title>
+</head>
+<body>
+    {% comment %} {% block header %} 
+    {% include 'base/header.html' %}
+    {% endblock %}
+    {% block content %} 
+    <h5>Este es el contenido del archivo base</h5> 
+    {% endblock %}
+    {% block footer %} 
+    <h5>Es el footer</h5> 
+    {% endblock %} {% endcomment %}
+
+
+<div class="content container">
+        <div class="row">
+            <div class="col-md-10">
+             <br><br><br><br>
+            </div>
+        </div>
+</div>
+
+    {% block navbar %} 
+    <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
+      <div class="container">
+        <a href="../" class="navbar-brand">Inicio</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Mascota <span class="caret"></span></a>
+              <div class="dropdown-menu" aria-labelledby="themes">
+                <a class="dropdown-item" href="{% url 'mascota_crear' %}">Registrar</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{% url 'mascota_listar' %}">Listar</a>
+            
+              </div>
+            </li>
+      
+         
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Adopciones <span class="caret"></span></a>
+                <div class="dropdown-menu" aria-labelledby="themes">
+                  <a class="dropdown-item" href="{% url 'solicitud_crear' %}">Solicitar</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="{% url 'solicitud_listar' %}">Listar Solicitud</a>
+              
+                </div>
+              </li>
+          </ul>
+
+        </div>
+
+ 
+        <ul class=" nav navbar-nav navbar-right">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Opciones <span class="caret"></span></a>
+            <div class="dropdown-menu" aria-labelledby="themes">
+              <a class="dropdown-item" href="{% url 'logout' %}">Cerrar sesión</a>
+        
+            </div>
+          </li>
+    
+       
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Adopciones <span class="caret"></span></a>
+              <div class="dropdown-menu" aria-labelledby="themes">
+                <a class="dropdown-item" href="{% url 'solicitud_crear' %}">Solicitar</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{% url 'solicitud_listar' %}">Listar Solicitud</a>
+            
+              </div>
+            </li>
+        </ul>
+
+      </div>
+    </div>
+{% endblock %}
+{% comment %} <div class="page-header">
+            <h1><a href="/">Formulario</a></h1>
+        </div> {% endcomment %}
+
+<div class="content container">
+        <div class="row">
+            <div class="col-md-10">
+            {% block content %}
+            {% endblock %}
+            </div>
+        </div>
+</div>
+
+<script src="{% static 'js/jquery.min.js' %}"></script>  
+<script src="{% static 'js/bootstrap.min.js' %}"></script> 
+
+</body>
+</html>
